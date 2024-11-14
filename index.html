@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Foto</title>
+    <style>
+        /* Definindo a cor de fundo e centralizando o conteúdo */
+        body {
+            background-color: #ffe6f2; /* Rosa claro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Estilizando o contêiner */
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Estilizando o título */
+        h1 {
+            font-size: 24px;
+            color: #ff66b2; /* Rosa escuro */
+            margin-bottom: 20px;
+        }
+
+        /* Estilizando a imagem */
+        .container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Estilo das rosas caindo */
+        .rose {
+            position: absolute;
+            top: -100px;
+            font-size: 24px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            color: #ff66b2; /* Cor da rosa */
+        }
+
+        /* Animação de queda */
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>EXPOSIÇÃO DE BELEZA</h1>
+        <img src="https://i.imgur.com/uNpIRDY.jpeg">
+    </div>
+
+    <script>
+        // Função para criar elementos de rosas
+        function createRose() {
+            const rose = document.createElement('div');
+            rose.classList.add('rose');
+            rose.textContent = '🌹';
+            rose.style.left = Math.random() * 100 + 'vw'; // Posição horizontal aleatória
+            rose.style.animationDuration = Math.random() * 3 + 2 + 's'; // Duração da animação aleatória
+            document.body.appendChild(rose);
+
+            // Remover a rosa após a animação
+            rose.addEventListener('animationend', () => {
+                rose.remove();
+            });
+        }
+
+        // Gerar rosas a cada intervalo
+        setInterval(createRose, 500);
+    </script>
+
+</body>
+</html>
